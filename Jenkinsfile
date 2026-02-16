@@ -11,5 +11,10 @@ pipeline{
                 echo("Running tests...")
             }
         }
+        stage("Deploying"){
+            steps{
+                echo("Deploying in Azure app service")
+            }
+        }
     }
 }

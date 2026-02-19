@@ -34,18 +34,9 @@ jobs:
             - name: Running the unit tests
               run: npm run test
 
-            - name: Installing the docker in runner to run my Dockerfile to build the image
-              run: |
-                    sudo apt-get update
-                    sudo apt-get install -y docker.io
-                    sudo usermod -aG docker $USER
-                    newgrp docker
-
-
-
-            - name: Building the image using the Dockerfile
-              run: |
-                    docker build -t my-node-app:latest .
+            - name: Building the frontend
+              run: npm run build
+              
 
 
 

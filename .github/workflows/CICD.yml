@@ -11,15 +11,8 @@ jobs:
         runs-on: ubuntu-latest
         container:
             image: node:20-alpine
-            options: --user node --workdir /home/node/app
+            options: --user 1001:1001 --workdir /home/node/app
         steps:
-            - name: Show mount ownership
-              run: |
-                  id
-                  stat -c '%u:%g %n' /__w /__w/_temp
-                  ls -ln /__w /__w/_temp
-
-
         
             - name: Checkoutcode or cloning the repo
               uses: actions/checkout@v3

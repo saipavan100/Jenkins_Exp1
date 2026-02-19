@@ -2,7 +2,7 @@ name: learning_github_actions
 run-name: CI/CD Pipeline for Node.js Application
 on:
     push:
-        branches: [main]
+        branches: [main,master]
         
         
 jobs:

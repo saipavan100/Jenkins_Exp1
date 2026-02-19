@@ -17,8 +17,6 @@ jobs:
             - name: Checkoutcode or cloning the repo
               uses: actions/checkout@v3
 
-            
-
             - name: installing node js 
               uses: actions/setup-node@v5.0.0
               with:
@@ -31,11 +29,19 @@ jobs:
                     then npm ci
                     else npm install
                     fi
+                    
             - name: Running the unit tests
               run: npm run test
 
             - name: Building the frontend
               run: npm run build
+
+            - name : lint checking
+              run: npm run lint
+
+            - name: format check
+              run: npm run format
+              
               
 
 

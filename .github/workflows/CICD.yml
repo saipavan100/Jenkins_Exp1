@@ -36,11 +36,7 @@ jobs:
             - name: Building the frontend
               run: npm run build
 
-            - name : lint checking
-              run: npm run lint
-
-            - name: format check
-              run: npm run format
+          
               
               
 

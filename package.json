@@ -9,7 +9,7 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "lint": "eslint .",
-    "format": "prettier --check .",
+    "format": "prettier --check ."
 
   },
   "dependencies": {

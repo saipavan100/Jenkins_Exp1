@@ -23,7 +23,7 @@ jobs:
               uses: actions/setup-node@v5.0.0
               with:
                     always-auth: true
-                    cache: true
+                    cache: npm
               
             - name: Installing the node modules from package.json
               run: |

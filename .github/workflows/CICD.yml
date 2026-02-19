@@ -1,0 +1,53 @@
+name: learning_github_actions
+run-name: CI/CD Pipeline for Node.js Application
+on:
+    push:
+        branches: [main]
+        
+        
+jobs:
+    building:
+        name: Build and Test
+        runs-on: ubuntu-latest
+        container:
+            image: node:20-alpine
+            options: --user node --workdir /home/node/app
+        steps:
+            - name: Checkoutcode or cloning the repo
+              uses: actions/checkout@v3
+
+            - name: installing node js 
+              uses: actions/setup-node@v5.0.0
+              with:
+                    always-auth: true
+                    cache: true
+              
+            - name: Installing the node modules from package.json
+              run: |
+                    if [ -f package-lock.json ];
+                    then npm ci
+                    else npm install
+                    fi
+            - name: Running the unit tests
+              run: npm run test
+
+            - name: Installing the docker in runner to run my Dockerfile to build the image
+              run: |
+                    sudo apt-get update
+                    sudo apt-get install -y docker.io
+                    sudo usermod -aG docker $USER
+                    newgrp docker
+
+
+
+            - name: Building the image using the Dockerfile
+              run: |
+                    docker build -t my-node-app:latest .
+
+
+
+              
+
+        
+
+    
